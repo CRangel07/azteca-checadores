@@ -1,0 +1,76 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  /* background-image: url(./images/fondo2.jpg);
+    background-size: max(400px, 60%); */
+  min-height: 100vh;
+}
+
+img {
+  width: 100%;
+}
+
+.form {
+  background-color: whitesmoke;
+  width: min(500px, 90%);
+}
+
+.cards {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card {
+  background-image: linear-gradient(
+    to left top,
+    #b6cde1,
+    #b6cde1,
+    #b6cde1,
+    #b6cde1,
+    #b6cde1,
+    #b2cadf,
+    #aec8de,
+    #aac5dc,
+    #a1bfd8,
+    #98b8d4,
+    #8eb2d1,
+    #85accd
+  );
+}
+
+.card__img {
+  margin: 1rem auto;
+  width: 100px;
+}
+
+.carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: none;
+}
+
+.carousel-item {
+  width: 100% !important;
+  height: 100vh !important;
+  flex-shrink: 0 !important;
+}
+
+.carousel__img {
+  width: 100%;
+  height: 100%;
+}
