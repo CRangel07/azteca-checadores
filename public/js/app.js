@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   startApp();
 });
 
-function startApp() {
+function startApp() { 
   const watchBtn = document.querySelector("#btn-watch");
   watchBtn.addEventListener("click", checkImages);
 }
@@ -24,6 +24,7 @@ function createCarousel(input) {
     carousel.style.display = "block";
     let cont = 0;
     for (const file of files) {
+      console.log(file);
       const reader = new FileReader();
 
       reader.onload = function (event) {

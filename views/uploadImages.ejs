@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/uploadImages.css">
+</head>
+<body>
+    <%- include('header.ejs') %>
+    <form action="upload" method="post">
+        <label for="">Seleccionar sucursal</label>
+        <select name="" id="">
+            <option value="1">CEDIS AZTECA - Oriente 4 No.999, Ciudad Industrial</option>
+            <option value="2">AZTECA SOLIDARIDAD - Carlos Torres Manzo No.35, Solidaridad</option>
+            <option value="3">ULTRAMARINOS AZTECA - Vicente Guerrero No.301, Patria</option>
+            <option value="4">AZTECA OBRERA - Miguel Arriaga No.396, Obrera</option>
+            <option value="5">TRINCHERAS AZTECA - Encino No.227, Colinas del sur</option>
+            <option value="6">TENENCIA AZTECA - Faisan No.117, Tenencia Morelos</option>
+            <option value="7">TIJERAS AZTECA - Juan de Baeza No.600, Dieciocho de mayo</option>
+        </select>
+
+        <input type="submit" value="Obtener imagenes">
+    </form>
+</body>
+</html>

@@ -19,6 +19,19 @@
 CREATE DATABASE IF NOT EXISTS `azteca_checadores` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `azteca_checadores`;
 
+-- Volcando estructura para tabla azteca_checadores.stores
+CREATE TABLE IF NOT EXISTS `stores` (
+  `store_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `store_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `store_street` varchar(80) NOT NULL DEFAULT '',
+  `store_number` varchar(6) NOT NULL DEFAULT '',
+  `store_cologne` varchar(80) NOT NULL DEFAULT '',
+  PRIMARY KEY (`store_ID`),
+  UNIQUE KEY `store_name` (`store_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- La exportación de datos fue deseleccionada.
+
 -- Volcando estructura para tabla azteca_checadores.users
 CREATE TABLE IF NOT EXISTS `users` (
   `user_ID` int unsigned NOT NULL AUTO_INCREMENT,
@@ -26,9 +39,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
   `user_email` varchar(255) DEFAULT '',
   `user_role` varchar(10) NOT NULL DEFAULT '',
+  `user_mainAdmin` tinyint unsigned DEFAULT NULL,
   PRIMARY KEY (`user_ID`),
   UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- La exportación de datos fue deseleccionada.
 

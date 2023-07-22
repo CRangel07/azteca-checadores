@@ -6,7 +6,7 @@ const db = require('./db.js');
 function hashear(){
     bcrypt.hash('azteca', 10, function(err, hash) {
         // Store hash in your password DB.
-        const query = `INSERT INTO users VALUES(null,"carloscr", ?, "","admin", 0);`;
+        const query = `INSERT INTO users VALUES(null,"admin", ?, "","admin", 1);`;
         console.log(hash);
         db.query(query, [hash], (err, res) =>{
             console.log(query);

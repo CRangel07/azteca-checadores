@@ -5,13 +5,14 @@ const loginRoutes = require("./routes/loginRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const authMiddleware = require('./middlewares/authMiddleware');
 
+
 // ***MIDDLEWARES***
 
 // Establecer el directorio de vistas
 app.set("views", "./views");
 // Configurar el motor de plantillas EJS
 app.set("view engine", "ejs");
-// Configurar el middleware express-session
+// Configurar el middleware express- session
 app.use(
   session({
     secret: "kjbkjbkbbkfhddzf", //cambiar

@@ -1,28 +1,30 @@
-
-
 <nav class="nav">
-    <div class="nav__title">Abarrotes Azteca</div>
-    <div>
-        <p class="nav__message">Bienvenido <%= username %></p>
-        <a href="/logout" class="nav__btn">Cerrar Sesión</a>
-    </div>
+  <div class="nav__title">Abarrotes Azteca</div>
+  <div>
+    <p class="nav__message">Bienvenido <%= username%></p>
+    <a href="/admin" class="nav__btn">Inicio</a>
+    <a href="/logout" class="nav__btn">Cerrar Sesión</a>
+  </div>
 </nav>
 
 <style>
-    .nav{
-        width: 100%;
-        display: flex;
-        padding: 1rem 2rem;
-        justify-content: space-evenly;
-        margin-bottom: 2rem;
-    }
-    .nav__title{
-        font-size: 2rem;
-    }
-    .nav__message{
-
-    }
-    .nav__btn{
-        text-decoration: none;
-    }
+  .nav {
+    width: 100%;
+    display: flex;
+    padding: 1rem 2rem;
+    justify-content: space-evenly;
+    margin-bottom: 2rem;
+    box-shadow: 0px 0.3px 3px #fff;
+    background-color: #3f3f3f;
+  }
+  .nav__title {
+    font-size: 2rem;
+    color: white;
+  }
+  .nav__message {
+    color: white;
+  }
+  .nav__btn {
+    text-decoration: none;
+  }
 </style>

@@ -10,4 +10,11 @@ const connection = mysql.createConnection({
     database: 'azteca_checadores',
   });
 
+// Cerrar la conexión a la base de datos al cerrar la aplicación
+process.on('SIGINT', () => {
+  connection.end();
+  console.log('Conexión a la base de datos cerrada.');
+  process.exit();
+});
+
 module.exports = connection;

@@ -3,8 +3,6 @@ const userModel = require('../models/userModel');
 
 const login = (req, res) => {
   const { username, password } = req.body;
-  console.log(username);
-  console.log(password);
 
   userModel.getUserByUsername(username, (err, user) => {
     if (err) {
@@ -36,8 +34,6 @@ const login = (req, res) => {
         role: user.user_role,
         mainAdmin: user.user_mainAdmin,
       };
-
-      console.log(req.session);
 
       // Redireccionar según el rol del usuario (por ejemplo, 'admin' o 'user')
       const role = user.user_role; // Suponemos que el rol del usuario se encuentra en la columna 'role'
