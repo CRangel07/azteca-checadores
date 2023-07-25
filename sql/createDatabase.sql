@@ -19,6 +19,21 @@
 CREATE DATABASE IF NOT EXISTS `azteca_checadores` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `azteca_checadores`;
 
+-- Volcando estructura para tabla azteca_checadores.images
+CREATE TABLE IF NOT EXISTS `images` (
+  `image_ID` int unsigned NOT NULL AUTO_INCREMENT,
+  `image_name` varchar(80) NOT NULL DEFAULT '0',
+  `image_dest` varchar(255) NOT NULL DEFAULT '0',
+  `image_url` varchar(255) NOT NULL DEFAULT '',
+  `image_uploadDate` datetime DEFAULT (now()),
+  `image_branch_ID` int unsigned NOT NULL DEFAULT (0),
+  PRIMARY KEY (`image_ID`),
+  KEY `FK_images_stores` (`image_branch_ID`),
+  CONSTRAINT `FK_images_stores` FOREIGN KEY (`image_branch_ID`) REFERENCES `stores` (`store_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- La exportación de datos fue deseleccionada.
+
 -- Volcando estructura para tabla azteca_checadores.stores
 CREATE TABLE IF NOT EXISTS `stores` (
   `store_ID` int unsigned NOT NULL AUTO_INCREMENT,
@@ -42,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `user_mainAdmin` tinyint unsigned DEFAULT NULL,
   PRIMARY KEY (`user_ID`),
   UNIQUE KEY `user_name` (`user_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- La exportación de datos fue deseleccionada.
 

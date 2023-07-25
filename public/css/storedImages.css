@@ -1,0 +1,71 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+}
+
+img {
+  width: 100%;
+
+  object-fit: contain;
+}
+
+.image__viewer {
+  position: absolute;
+  /* top: 10vh; */
+  left: 50%;
+  /* width: 50vw; */
+  /* height: 80vh; */
+  background-color: transparent;
+  transform: translateX(-50%);
+  transition: 0.4s, ease;
+  display: none;
+}
+
+.image__container {
+  position: relative;
+}
+.img__btn {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  padding: 0.7rem 1rem;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.active {
+  display: block;
+}
+
+.toast__stored {
+  position: fixed;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px;
+  background-color: #6610F2;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.delete-icon{
+  color: #333;
+}
+
+@media (width < 700px) {
+  .image__viewer {
+    width: 90%;
+    top: 50%;
+  }
+}

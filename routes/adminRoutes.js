@@ -35,15 +35,19 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.get("/admin", adminController.showAdminPage);
-router.get("/admin/uploaded", adminController.showLoadPage);
-router.post("/admin/uploaded", adminController.getAllBranchImages);
+// router.get("/admin/uploaded", adminController.showLoadPage);
+// router.post("/admin/uploaded", adminController.getAllBranchImages);
 router.post(
-  "/admin/save",
+  "/admin",
   upload.array("image", 15),
   adminController.saveImages
 );
 router.get('/admin/images', adminController.showBranchImages);
 router.get('/admin/stored', adminController.showStoredPage);
+router.post('/admin/stored', adminController.getImages);
+router.delete('/admin/stored', adminController.deleteImage);
+router.delete('/admin/stored/:id', adminController.deleteImage);
+
 
 
 module.exports = router; 

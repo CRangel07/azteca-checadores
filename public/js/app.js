@@ -1,5 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  startApp();
+  // startApp();
+  
+  const toast = document.querySelector('#toast');
+  
+  if(toast) {
+      setTimeout(() => {
+        toast.style.display = 'none';
+      },4000);
+  }
 });
 
 function startApp() { 

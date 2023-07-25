@@ -1,14 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/uploadImages.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/normalize.css" />
+    <link rel="stylesheet" href="/css/storedImages.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      crossorigin="anonymous"
+    />
+    <script src="https://kit.fontawesome.com/04d2b76897.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
     <%- include('header.ejs') %>
-    
-</body>
+    <form
+      action="/admin/stored"
+      method="post"
+      class="d-flex justify-content-evenly container align-items-center"
+    >
+      <div>
+        <label for="">Seleccionar sucursal</label>
+        <select name="branch" id="">
+          <option value="1">
+            CEDIS AZTECA - Oriente 4 No.999, Ciudad Industrial
+          </option>
+          <option value="2">
+            AZTECA SOLIDARIDAD - Carlos Torres Manzo No.35, Solidaridad
+          </option>
+          <option value="3">
+            ULTRAMARINOS AZTECA - Vicente Guerrero No.301, Patria
+          </option>
+          <option value="4">
+            AZTECA OBRERA - Miguel Arriaga No.396, Obrera
+          </option>
+          <option value="5">
+            TRINCHERAS AZTECA - Encino No.227, Colinas del sur
+          </option>
+          <option value="6">
+            TENENCIA AZTECA - Faisan No.117, Tenencia Morelos
+          </option>
+          <option value="7">
+            TIJERAS AZTECA - Juan de Baeza No.600, Dieciocho de mayo
+          </option>
+        </select>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-secondary btn-sm me-1"
+        name="getimage"
+        value="1"
+      >
+        Obtener Imagen
+      </button>
+      <button
+        type="submit"
+        class="btn btn-secondary btn-sm"
+        name="getall"
+        value="1"
+      >
+        Mostrar todas
+      </button>
+    </form>
+
+    <table class="table table-dark table-striped container mt-3">
+      <thead>
+        <tr>
+          <th scope="col">Sucursal</th>
+          <th scope="col">Nombre Imagen</th>
+          <th scope="col">Fecha de carga</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Verificar si la variable "miVariable" está definida -->
+        <% if (branchesImages == 'undefined') { %>
+        <!-- Contenido HTML si "miVariable" está definida -->
+
+        <% } else { %> <% branchesImages.forEach((branch) => {%>
+        <tr>
+          <td scope="col"><%= branch.store_name %></td>
+          <td scope="col"><%= branch.image_name %></td>
+          <td scope="col"><%= branch.image_uploadDate %></td>
+          <td scope="col">
+            <button
+              class="delete-link btn btn-danger btn-sm"
+              data-image-id="<%= branch.image_ID %>"
+              ><i class="fa-solid fa-trash-can delete-icon"></i></button
+            >
+            <button
+              href="#"
+              class="viewer-link btn btn-warning btn-sm"
+              data-image-url="<%= branch.image_url %>"
+              ><i class="fa-solid fa-eye delete-icon"></i></button
+            >
+          </td>
+        </tr>
+
+        <% });} %>
+      </tbody>
+    </table>
+
+    <div class="image__viewer">
+      <div class="img__container">
+        <div class="img__btn">Cerrar</div>
+        <img id="image-viewer" src="/images/image1.jpg" alt="" />
+      </div>
+    </div>
+
+  
+    <% if (message == 'undefined') {%>
+    <% }else{%>
+        <div class="toast__stored">
+            <%= message%>
+        </div>
+    <%}%>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/storedImages.js"></script>
+  </body>
 </html>

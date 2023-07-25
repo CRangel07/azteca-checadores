@@ -14,7 +14,7 @@ const adminModel = {
       const formattedDate = now.format("YYYY-MM-DD HH:mm:ss");
       let { filename, destination, path } = file;
       path = path.replace('public', '');
-      console.log(filename, destination, path);
+      
       const query =
         "INSERT INTO images(image_ID, image_name, image_dest, image_url, image_uploadDate, image_branch_ID) VALUES(null, ?, ?, ?, ?, ?);";
       db.query(
@@ -25,7 +25,7 @@ const adminModel = {
             console.log(err);
             return err;
           } else {
-            return results[0];
+            return results;
           }
         }
       );
@@ -34,7 +34,7 @@ const adminModel = {
   // Funcion para obtener las imagenes de todas las sucursales
   getAllBranchImages: (callback) => {
     // Lógica para obtener todas las imagenes
-    db.query("SELECT * FROM images;", (err, results) => {
+    db.query('SELECT store_name, image_ID ,image_name, image_uploadDate, image_url FROM images JOIN stores ON image_branch_ID = stores.store_ID;', (err, results) => {
       if (err) {
         console.log(err);
         return callback(err, null);
@@ -50,7 +50,7 @@ const adminModel = {
   getOneBranchImage: (branch) => {
     // Obtener una imagen
     
-    const query = "SELECT * FROM `images` WHERE `image_branch_ID` = ?";
+    const query = "SELECT * FROM images JOIN stores ON images.image_branch_ID = stores.store_ID WHERE images.image_branch_ID = ?;";
     return new Promise((resolve, reject) => {
       db.query(query, [branch], (err, results) => {
         if (err) {
@@ -61,8 +61,22 @@ const adminModel = {
         }
       });
     });
-  }
-  // Otras funciones del modelo (createUser, updateUser, deleteUser, etc.)
+  },
+
+  deleteImage: (id) => {
+    const query = "DELETE FROM images WHERE images.image_ID = ?;";
+    return new Promise((resolve, reject) => {
+      db.query(query, [id], (err, results) => {
+        if (err) {
+          console.log(err);
+          reject(err); // Rechaza la promesa si hay un error
+        } else {
+          resolve(results); // Resuelve la promesa con los resultados de la consulta
+        }
+      });
+      db.commit();
+    });
+  } 
 };
 
 module.exports = adminModel;
