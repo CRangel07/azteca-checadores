@@ -3,6 +3,7 @@ const app = express();
 const session = require("express-session");
 const loginRoutes = require("./routes/loginRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const userRoutes = require('./routes/userRoutes');
 const authMiddleware = require('./middlewares/authMiddleware');
 
 
@@ -30,11 +31,8 @@ app.use('/admin', authMiddleware);
 app.use(loginRoutes);
 // Rutas para login
 app.use(adminRoutes);
-
-app.get("/", (req, res) => {
-  res.redirect("/login");
-});
-
+app.use(userRoutes);
+app.use('/', (req, res) => res.redirect('/login'));
 // Ruta pagina 404
 app.use((req, res) => {
   res.status(404).render('notFound404');

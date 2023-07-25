@@ -1,4 +1,3 @@
-const path = require("path");
 const adminModel = require("../models/adminModel");
 
 const showAdminPage = (req, res) => {
