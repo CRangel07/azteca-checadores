@@ -36,7 +36,6 @@ const getImages = async (req, res) => {
     try {
       const branch = req.body.branch;
       const branchesImages = await adminModel.getOneBranchImage(branch);
-      console.log(branchesImages);
       if (branchesImages.length == 0) {
         return res.render("storedImages", {
           username,
@@ -70,14 +69,14 @@ const saveImages = (req, res) => {
 
 const showBranchImages = async (req, res) => {
   try {
+    const { username } = req.session.user;
     const branch = req.query.branch;
     const results = await adminModel.getOneBranchImage(branch);
 
-    const imageBasePath = "/public/uploads";
     if (results.length == 0) {
-      res.redirect("/admin");
+      res.render("admin", {username, message: 'No hay imagenes guardadas en sucursal'});
     } else {
-      res.render("carousel", { results, imageBasePath });
+      res.render("carousel", { results});
     }
   } catch (error) {
     console.error("Error al obtener las imágenes de la sucursal:", error);
