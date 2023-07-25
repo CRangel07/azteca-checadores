@@ -35,6 +35,11 @@ app.get("/", (req, res) => {
   res.redirect("/login");
 });
 
+// Ruta pagina 404
+app.use((req, res) => {
+  res.status(404).render('notFound404');
+});
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server listening at port: ${PORT}`);
